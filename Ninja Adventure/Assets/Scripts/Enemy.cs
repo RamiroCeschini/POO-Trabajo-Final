@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 3.5f;
-
-    Rigidbody2D EnemyRigidbody2D;
-    private Vector2 enemyMovements;
+    public float speed = 3.5f;
+    public Rigidbody2D EnemyRigidbody2D;
+    public Vector2 enemyMovements;
     public GameObject target;
 
     public Vector2 EnemyMovements
@@ -24,18 +22,27 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        SetMovements();
+    }
 
+    public void FixedUpdate()
+    {
+        MoveEnemy();
+    }
+
+    public void SetMovements()
+    {
         enemyMovements = new Vector2(target.transform.position.x, target.transform.position.y) - EnemyRigidbody2D.position;
         enemyMovements.Normalize();
     }
 
-    public void FixedUpdate()
+    public void MoveEnemy()
     {
         if (Vector2.Distance(new Vector2(target.transform.position.x, target.transform.position.y), EnemyRigidbody2D.position) < 5f)
         {
             EnemyRigidbody2D.MovePosition(EnemyRigidbody2D.position + speed * Time.deltaTime * enemyMovements);
         }
-       
+
     }
 
 }
