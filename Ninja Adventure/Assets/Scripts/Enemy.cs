@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D EnemyRigidbody2D;
     public Vector2 enemyMovements;
     public GameObject target;
-
+    public NavMeshAgent agent;
+    public bool canAttack;
+    public float attackDistance;
+    public float attackCoolDown;
     public Vector2 EnemyMovements
     {
         get { return enemyMovements; }
@@ -18,11 +22,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         EnemyRigidbody2D = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
-    {
-        SetMovements();
+        StartAgent();
     }
 
     public void FixedUpdate()
@@ -30,24 +30,27 @@ public class Enemy : MonoBehaviour
         MoveEnemy();
     }
 
-    public void SetMovements()
-    {
-        enemyMovements = new Vector2(target.transform.position.x, target.transform.position.y) - EnemyRigidbody2D.position;
-        enemyMovements.Normalize();
-    }
 
     public void MoveEnemy()
     {
-        if (Vector2.Distance(new Vector2(target.transform.position.x, target.transform.position.y), EnemyRigidbody2D.position) < 5f)
+        if (Vector2.Distance(new Vector2(target.transform.position.x, target.transform.position.y), EnemyRigidbody2D.position) < 8f)
         {
-            EnemyRigidbody2D.MovePosition(EnemyRigidbody2D.position + speed * Time.deltaTime * enemyMovements);
+            agent.SetDestination(target.transform.position);
         }
 
     }
 
-    public virtual void Attack()
+    public virtual void Attack()  { }
+    public void ResetCoolDown()
     {
+        canAttack = true;
+    }
 
+    public void StartAgent()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
 }

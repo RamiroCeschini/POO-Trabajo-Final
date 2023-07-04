@@ -6,18 +6,16 @@ using UnityEngine;
 
 public class RedEnemy : Enemy, Iinteractuable
 {
-    [SerializeField] private float attackDistance;
-    [SerializeField] private float attackCoolDown;
     [SerializeField] private GameObject leftAttackCollider;
     [SerializeField] private GameObject rightAttackCollider;
     [SerializeField] private Animator weaponAnimator;
-    private bool canAttack;
 
 
     private void Start()
     {
         canAttack = true;
         EnemyRigidbody2D = GetComponent<Rigidbody2D>();
+        StartAgent();
     }
     private new void FixedUpdate()
     {
@@ -42,11 +40,6 @@ public class RedEnemy : Enemy, Iinteractuable
             canAttack = false;
             Invoke("ResetCoolDown", attackCoolDown);
         }
-    }
-
-    private void ResetCoolDown()
-    {
-        canAttack = true;
     }
 
     //Causar daño con Iinteractuable
