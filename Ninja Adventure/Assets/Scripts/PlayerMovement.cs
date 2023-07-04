@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 3.5f;
 
     Animator PlayerAnimation;
+    public Animator swordAnimator;
     Rigidbody2D PlayerRigidbody2D;
     private Vector2 playerMovements;
 
@@ -28,6 +29,16 @@ public class PlayerMovement : MonoBehaviour
         PlayerAnimation.SetFloat("movimientoX", playerMovements.x);
         PlayerAnimation.SetFloat("movimientoY", playerMovements.y);
         playerMovements.Normalize();
+        Attack();
+
+    }
+
+    public void Attack()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            swordAnimator.SetTrigger("Ataque");
+        }
     }
 
     public void FixedUpdate()
