@@ -10,9 +10,10 @@ public class BlackEnemy : Enemy
         canAttack = true;
         EnemyRigidbody2D = GetComponent<Rigidbody2D>();
         StartAgent();
+        target = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private new void FixedUpdate()
+    private void FixedUpdate()
     {
         MoveEnemy();
         Attack();

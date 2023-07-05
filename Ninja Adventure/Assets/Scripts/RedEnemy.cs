@@ -13,11 +13,12 @@ public class RedEnemy : Enemy, Iinteractuable
 
     private void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player");
         canAttack = true;
         EnemyRigidbody2D = GetComponent<Rigidbody2D>();
         StartAgent();
     }
-    private new void FixedUpdate()
+    private void FixedUpdate()
     {
         MoveEnemy();
         Attack();
@@ -37,15 +38,22 @@ public class RedEnemy : Enemy, Iinteractuable
                 rightAttackCollider.SetActive(true);
                 weaponAnimator.SetTrigger("AttackRight");
             }
+            Invoke("DisableColliders", 0.5f);
             canAttack = false;
             Invoke("ResetCoolDown", attackCoolDown);
         }
+    }
+
+    public void DisableColliders()
+    {
+        leftAttackCollider.SetActive(false);
+        rightAttackCollider.SetActive(false);
     }
 
     //Causar daño con Iinteractuable
 
     public void Accion()
     {
-        target.gameObject.GetComponent<PlayerAttack>();
+        target.gameObject.GetComponent<PlayerLife>().TakeDamage(damage);
     }
 }

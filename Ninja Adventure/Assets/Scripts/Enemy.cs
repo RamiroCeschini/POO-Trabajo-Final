@@ -8,28 +8,12 @@ public class Enemy : MonoBehaviour
 {
     public float speed = 3.5f;
     public Rigidbody2D EnemyRigidbody2D;
-    public Vector2 enemyMovements;
     public GameObject target;
     public NavMeshAgent agent;
     public bool canAttack;
     public float attackDistance;
     public float attackCoolDown;
-    public Vector2 EnemyMovements
-    {
-        get { return enemyMovements; }
-    }
-
-    void Start()
-    {
-        EnemyRigidbody2D = GetComponent<Rigidbody2D>();
-        StartAgent();
-    }
-
-    public void FixedUpdate()
-    {
-        MoveEnemy();
-    }
-
+    public int damage;
 
     public void MoveEnemy()
     {
