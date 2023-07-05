@@ -8,8 +8,15 @@ public class PlayerLife : MonoBehaviour, IlifeSystem
     public delegate void VidaEvent();
     public static VidaEvent vidaEvent;
     
+    public int cantVidas { get { return vidas; } }
+
+    private void Start()
+    {
+        vidaEvent?.Invoke();
+    }
     public void TakeDamage(int damage)
     {
+        vidaEvent?.Invoke();
         vidas -= damage;
         CheckLife();
 
