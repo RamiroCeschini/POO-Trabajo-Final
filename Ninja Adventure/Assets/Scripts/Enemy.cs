@@ -6,7 +6,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed = 3.5f;
+    public ScriptableEnemigo enemyData;
+    public float speed;
     public Rigidbody2D EnemyRigidbody2D;
     public GameObject target;
     public NavMeshAgent agent;
@@ -35,6 +36,10 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        speed = enemyData.S_speed;
+        damage = enemyData.S_damage;
+        attackDistance = enemyData.S_attackDistance;
+        attackCoolDown = enemyData.S_attackCooldown;
     }
 
 }

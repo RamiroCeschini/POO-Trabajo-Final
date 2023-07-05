@@ -233,14 +233,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67d7e4b9570dc3345b49d4aaa7dda72c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  enemyData: {fileID: 11400000, guid: a14290306d5a1f34781ec9c488e6d7cb, type: 2}
+  speed: 0
   EnemyRigidbody2D: {fileID: 0}
   target: {fileID: 0}
   agent: {fileID: 0}
   canAttack: 0
-  attackDistance: 1.55
-  attackCoolDown: 1
-  damage: 1
+  attackDistance: 0
+  attackCoolDown: 0
+  damage: 0
   leftAttackCollider: {fileID: 1879487422}
   rightAttackCollider: {fileID: 1758598357}
   weaponAnimator: {fileID: 279241376}
@@ -800,7 +801,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!4 &1091851022
 Transform:
   m_ObjectHideFlags: 0
@@ -829,6 +830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0b7f4c36f37cb44be1e21370ee13c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 7fc7cad876505934cbf92d6fb1fffde7, type: 2}
   speed: 3.5
   EnemyRigidbody2D: {fileID: 0}
   target: {fileID: 0}

@@ -11,6 +11,7 @@ public class PlayerLife : MonoBehaviour, IlifeSystem
     public void TakeDamage(int damage)
     {
         vidas -= damage;
+        CheckLife();
 
     }
     public void CheckLife()

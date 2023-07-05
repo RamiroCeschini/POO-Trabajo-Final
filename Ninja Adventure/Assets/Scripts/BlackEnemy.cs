@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackEnemy : Enemy
+public class BlackEnemy : Enemy, Iinteractuable
 {
     [SerializeField] private Vector2 dashPosition;
     private void Start()
@@ -28,6 +28,11 @@ public class BlackEnemy : Enemy
             canAttack = false;
             Invoke("ResetCoolDown", attackCoolDown);
         }
+    }
+
+    public void Accion()
+    {
+        target.gameObject.GetComponent<PlayerLife>().TakeDamage(damage);
     }
 }
 
