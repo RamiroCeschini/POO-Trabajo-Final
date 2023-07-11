@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     }
 
     public virtual void Attack()  { }
+
     public void ResetCoolDown()
     {
         canAttack = true;
