@@ -19,7 +19,7 @@ public class BlackEnemy : Enemy, Iinteractuable
         Attack();
     }
 
-    public override void Attack()
+    protected override void Attack()
     {
         if (Vector2.Distance(new Vector2(target.transform.position.x, target.transform.position.y), EnemyRigidbody2D.position) < attackDistance && canAttack == true)
         {

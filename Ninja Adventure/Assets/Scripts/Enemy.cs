@@ -6,17 +6,18 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public ScriptableEnemigo enemyData;
-    public float speed;
-    public Rigidbody2D EnemyRigidbody2D;
-    public GameObject target;
-    public NavMeshAgent agent;
-    public bool canAttack;
-    public float attackDistance;
-    public float attackCoolDown;
-    public int damage;
+    
+    protected ScriptableEnemigo enemyData;
+    protected float speed;
+    protected Rigidbody2D EnemyRigidbody2D;
+    protected GameObject target;
+    protected NavMeshAgent agent;
+    protected bool canAttack;
+    protected float attackDistance;
+    protected float attackCoolDown;
+    protected int damage;
 
-    public void MoveEnemy()
+    protected void MoveEnemy()
     {
         if (Vector2.Distance(new Vector2(target.transform.position.x, target.transform.position.y), EnemyRigidbody2D.position) < 8f)
         {
@@ -25,14 +26,14 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public virtual void Attack()  { }
+    protected virtual void Attack()  { }
 
-    public void ResetCoolDown()
+    protected void ResetCoolDown()
     {
         canAttack = true;
     }
 
-    public void StartAgent()
+    protected void StartAgent()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;

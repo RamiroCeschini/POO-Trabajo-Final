@@ -24,7 +24,7 @@ public class RedEnemy : Enemy, Iinteractuable
         Attack();
     }
 
-    public override void Attack()
+    protected override void Attack()
     {
         if (Vector2.Distance(new Vector2(target.transform.position.x, target.transform.position.y), EnemyRigidbody2D.position) < attackDistance && canAttack == true)
         {
@@ -44,14 +44,11 @@ public class RedEnemy : Enemy, Iinteractuable
         }
     }
 
-    public void DisableColliders()
+    private void DisableColliders()
     {
         leftAttackCollider.SetActive(false);
         rightAttackCollider.SetActive(false);
     }
-
-    //Causar daño con Iinteractuable
-
     public void Accion()
     {
         target.gameObject.GetComponent<PlayerLife>().TakeDamage(damage);
