@@ -2,40 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 3.5f;
+    
+    protected ScriptableEnemigo enemyData;
+    protected float speed;
+    protected Rigidbody2D EnemyRigidbody2D;
+    protected GameObject target;
+    protected NavMeshAgent agent;
+    protected bool canAttack;
+    protected float attackDistance;
+    protected float attackCoolDown;
+    protected int damage;
 
-    Rigidbody2D EnemyRigidbody2D;
-    private Vector2 enemyMovements;
-    public GameObject target;
-
-    public Vector2 EnemyMovements
+    protected void MoveEnemy()
     {
-        get { return enemyMovements; }
-    }
-
-    void Start()
-    {
-        EnemyRigidbody2D = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
-    {
-
-        enemyMovements = new Vector2(target.transform.position.x, target.transform.position.y) - EnemyRigidbody2D.position;
-        enemyMovements.Normalize();
-    }
-
-    public void FixedUpdate()
-    {
-        if (Vector2.Distance(new Vector2(target.transform.position.x, target.transform.position.y), EnemyRigidbody2D.position) < 5f)
+        if (Vector2.Distance(new Vector2(target.transform.position.x, target.transform.position.y), EnemyRigidbody2D.position) < 8f)
         {
-            EnemyRigidbody2D.MovePosition(EnemyRigidbody2D.position + speed * Time.deltaTime * enemyMovements);
+            agent.SetDestination(target.transform.position);
         }
-       
+
+    }
+
+    protected virtual void Attack()  { }
+
+    protected void ResetCoolDown()
+    {
+        canAttack = true;
+    }
+
+    protected void StartAgent()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        speed = enemyData.S_speed;
+        damage = enemyData.S_damage;
+        attackDistance = enemyData.S_attackDistance;
+        attackCoolDown = enemyData.S_attackCooldown;
     }
 
 }
