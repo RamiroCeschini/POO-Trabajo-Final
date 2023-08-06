@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField] private int damage;
     private Animator swordAnimator;
     private bool isAttacking;
 
@@ -50,14 +51,25 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        swordAnimator.SetTrigger("Attack");
-        IsAttacking = true;
+        if (!IsAttacking)
+        {
+            swordAnimator.SetTrigger("Attack");
+            IsAttacking = true;
+        }
     }
 
     public void ResetIsAttacking()
     {
         IsAttacking = false;
-        Debug.Log("not attacking");
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("colision");
+        if (collision.gameObject.GetComponent<IlifeSystem>() != null && isAttacking)
+        {
+            Debug.Log("colision con enemigo");
+            collision.gameObject.GetComponent<IlifeSystem>().TakeDamage(damage);
+        }
+    }
 }
