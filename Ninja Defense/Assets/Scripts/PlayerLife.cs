@@ -2,17 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLife : MonoBehaviour
+public class PlayerLife : MonoBehaviour, IlifeSystem
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int maxLife;
+    public int currentLife;
+
+    private void Awake()
     {
-        
+        currentLife = maxLife;
+    }
+    private int CurrentLife
+    {
+        get { return currentLife; }
+        set
+        {
+            if (value > 0 && value < maxLife)
+            {
+                currentLife = value;
+            }
+            else if (value >= maxLife)
+            {
+                currentLife = maxLife;
+            }
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(int damage)
     {
-        
+        CurrentLife -= damage;
     }
 }

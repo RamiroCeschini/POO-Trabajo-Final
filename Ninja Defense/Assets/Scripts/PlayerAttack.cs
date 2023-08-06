@@ -63,12 +63,10 @@ public class PlayerAttack : MonoBehaviour
         IsAttacking = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("colision");
         if (collision.gameObject.GetComponent<IlifeSystem>() != null && isAttacking)
         {
-            Debug.Log("colision con enemigo");
             collision.gameObject.GetComponent<IlifeSystem>().TakeDamage(damage);
         }
     }
