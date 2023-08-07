@@ -31,7 +31,7 @@ public class RedEnemy : Enemy
             if (target.transform.position.x < EnemyRigidbody2D.position.x)
             {
                 leftAttackCollider.SetActive(true);
-                weaponAnimator.SetTrigger("Attack");
+                weaponAnimator.SetTrigger("AttackLeft");
             }
             else
             {
@@ -50,4 +50,11 @@ public class RedEnemy : Enemy
         rightAttackCollider.SetActive(false);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.GetComponent<IlifeSystem>() != null)
+        {
+            collision.gameObject.GetComponent<IlifeSystem>().TakeDamage(damage);
+        }
+    }
 }
