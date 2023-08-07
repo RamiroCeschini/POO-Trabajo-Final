@@ -35,13 +35,19 @@ public class ShurikenAttack : MonoBehaviour
         CurrentShurikens = startShurikens;
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
             ShurikenSpawn();
         }
     }
+
+    public void AddShuriken(int shurikenAmount)
+    {
+        CurrentShurikens += shurikenAmount;
+    }
+
     private void ShurikenSpawn()
     {
         if (currentShurikens > 0) 
