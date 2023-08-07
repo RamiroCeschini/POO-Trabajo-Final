@@ -34,4 +34,12 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerRigidbody2D.MovePosition(PlayerRigidbody2D.position + speed * Time.deltaTime * playerMovements);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Iinteractuable>() != null)
+        {
+            collision.gameObject.GetComponent<Iinteractuable>().Accion();
+        }
+    }
 }
