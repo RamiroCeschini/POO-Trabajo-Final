@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LifeManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Image lifeBar;
+
+    private PlayerLife playerLifeSystem;
+
+    private void OnEnable()
     {
-        
+        PlayerLife.lifeEvent += UpdateLife;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        PlayerLife.lifeEvent -= UpdateLife;
     }
+    private void Start()
+    {
+        playerLifeSystem = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
+        UpdateLife();
+    }
+
+    public void UpdateLife()
+    {
+        float currentLife = playerLifeSystem.CurrentLife;
+        float maxLife = playerLifeSystem.MaxLife;
+        lifeBar.fillAmount = currentLife / maxLife;
+    }
+
 }

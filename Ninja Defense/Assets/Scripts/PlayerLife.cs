@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,14 +8,20 @@ public class PlayerLife : MonoBehaviour, IlifeSystem
     [SerializeField] private int maxLife;
     private int currentLife;
 
+    public static event Action lifeEvent;
     private void Awake()
     {
         currentLife = maxLife;
     }
-    private int CurrentLife
+
+    public int MaxLife
+    {
+        get { return maxLife; }
+    }
+    public int CurrentLife
     {
         get { return currentLife; }
-        set
+        private set
         {
             if (value > 0 && value < maxLife)
             {
@@ -33,8 +40,19 @@ public class PlayerLife : MonoBehaviour, IlifeSystem
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            TakeDamage(5);
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         CurrentLife -= damage;
+        lifeEvent?.Invoke();
     }
+
+
 }
