@@ -6,16 +6,10 @@ using UnityEngine;
 
 public class RedEnemy : Enemy
 {
-    [SerializeField] private GameObject leftAttackCollider;
-    [SerializeField] private GameObject rightAttackCollider;
     [SerializeField] private Animator weaponAnimator;
-
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player");
-        canAttack = true;
-        EnemyRigidbody2D = GetComponent<Rigidbody2D>();
         StartAgent();
     }
     private void FixedUpdate()
@@ -30,14 +24,13 @@ public class RedEnemy : Enemy
         {
             if (target.transform.position.x < EnemyRigidbody2D.position.x)
             {
-                leftAttackCollider.SetActive(true);
                 weaponAnimator.SetTrigger("AttackLeft");
             }
             else
             {
-                rightAttackCollider.SetActive(true);
                 weaponAnimator.SetTrigger("AttackRight");
             }
+            isAttacking = true;
             Invoke("DisableColliders", 0.5f);
             canAttack = false;
             Invoke("ResetCoolDown", attackCoolDown);
@@ -46,15 +39,7 @@ public class RedEnemy : Enemy
 
     private void DisableColliders()
     {
-        leftAttackCollider.SetActive(false);
-        rightAttackCollider.SetActive(false);
+        isAttacking = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.GetComponent<IlifeSystem>() != null)
-        {
-            collision.gameObject.GetComponent<IlifeSystem>().TakeDamage(damage);
-        }
-    }
 }

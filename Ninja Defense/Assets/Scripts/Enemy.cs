@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     protected float attackCoolDown;
     protected int damage;
     protected Animator enemyAnimator;
+    protected bool isAttacking;
 
     protected void MoveEnemy()
     {
@@ -42,13 +43,28 @@ public class Enemy : MonoBehaviour
     protected void StartAgent()
     {
         enemyAnimator = GetComponent<Animator>();
+        EnemyRigidbody2D = GetComponent<Rigidbody2D>();
+
+        canAttack = true;
+        isAttacking = false;
+
+        target = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        
         speed = enemyData.S_speed;
         damage = enemyData.S_damage;
         attackDistance = enemyData.S_attackDistance;
         attackCoolDown = enemyData.S_attackCooldown;
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<IlifeSystem>() != null && isAttacking)
+        {
+            collision.gameObject.GetComponent<IlifeSystem>().TakeDamage(damage);
+        }
+    }
 }
