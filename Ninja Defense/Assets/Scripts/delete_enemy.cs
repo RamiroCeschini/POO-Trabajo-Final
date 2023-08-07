@@ -13,10 +13,10 @@ public class delete_enemy : MonoBehaviour, IlifeSystem
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision");
+
         if (collision.gameObject.GetComponent<IlifeSystem>() != null)
         {
-            Debug.Log("colisio con player");
+
             collision.gameObject.GetComponent<IlifeSystem>().TakeDamage(enemyDamage);
         }
     }

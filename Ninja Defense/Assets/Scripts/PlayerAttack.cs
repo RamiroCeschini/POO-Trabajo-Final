@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] private int damage;
+    [SerializeField] private int swordDamage;
+   
     private Animator swordAnimator;
     private bool isAttacking;
 
@@ -58,6 +59,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+
     public void ResetIsAttacking()
     {
         IsAttacking = false;
@@ -67,7 +69,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<IlifeSystem>() != null && isAttacking)
         {
-            collision.gameObject.GetComponent<IlifeSystem>().TakeDamage(damage);
+            collision.gameObject.GetComponent<IlifeSystem>().TakeDamage(swordDamage);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerLife : MonoBehaviour, IlifeSystem
 {
     [SerializeField] private int maxLife;
-    public int currentLife;
+    private int currentLife;
 
     private void Awake()
     {
@@ -23,6 +23,11 @@ public class PlayerLife : MonoBehaviour, IlifeSystem
             else if (value >= maxLife)
             {
                 currentLife = maxLife;
+            }
+            else if (value <= 0)
+            {
+                currentLife = 0;
+                Debug.Log("derrota");
             }
 
         }
