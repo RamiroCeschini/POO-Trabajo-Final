@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class Items : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected GameObject playerGameObject;
+    [SerializeField] protected int abstractBonus;
+    [SerializeField] protected GameObject itemParticle;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
