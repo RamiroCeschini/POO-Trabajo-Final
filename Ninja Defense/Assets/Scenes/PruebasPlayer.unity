@@ -478,6 +478,7 @@ GameObject:
   - component: {fileID: 586877247}
   - component: {fileID: 586877248}
   - component: {fileID: 586877249}
+  - component: {fileID: 586877250}
   m_Layer: 0
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -552,6 +553,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &586877250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586877245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42831bc2ceb0b884490aafd1412b8792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shurikenSpawnPoint: {fileID: 1275060627}
+  shurikenPrefab: {fileID: 5036641671692135920, guid: 7df0ebe62e54aea4d9290559c59dc5d4, type: 3}
+  startShurikens: 10
+  maxShurikens: 5
 --- !u!1 &687553545
 GameObject:
   m_ObjectHideFlags: 0

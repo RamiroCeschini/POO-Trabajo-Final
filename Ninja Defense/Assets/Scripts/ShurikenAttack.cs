@@ -26,9 +26,13 @@ public class ShurikenAttack : MonoBehaviour
             else if (value <= 0)
             {
                 currentShurikens = 0;
-                Debug.Log("derrota");
             }
         }
+    }
+
+    private void Start()
+    {
+        CurrentShurikens = startShurikens;
     }
 
     void Update()
@@ -40,7 +44,11 @@ public class ShurikenAttack : MonoBehaviour
     }
     private void ShurikenSpawn()
     {
-        Instantiate(shurikenPrefab, shurikenSpawnPoint.position, shurikenSpawnPoint.rotation);
+        if (currentShurikens > 0) 
+        {
+            Instantiate(shurikenPrefab, shurikenSpawnPoint.position, shurikenSpawnPoint.rotation);
+            CurrentShurikens--;
+        }
     }
 
 }
