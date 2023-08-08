@@ -7,29 +7,30 @@ public class EnemiesManager : MonoBehaviour
 {
     [SerializeField] private Text enemiesText;
     [SerializeField] private Text enemiesTextShadow;
-    private int counter = -1;
+    private int counter;
     private int totalEnemies;
-
-    public int Counter
-    {
-        get { return counter; }
-    }
-
-    public int TotalEnemies
-    {
-        get { return totalEnemies; }
-    }
 
     private void Start()
     {
-        totalEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        EnemiesText();
+        StartManager();
     }
     void EnemiesText()
     {
         counter++;
         enemiesText.text = "ENEMIES: " + counter + "/" + totalEnemies;
         enemiesTextShadow.text = "ENEMIES: " + counter + "/" + totalEnemies;
+        if (counter == totalEnemies)
+        {
+            enemiesText.text = "Go to the exit!";
+            enemiesTextShadow.text = "Go to the exit!";
+        }
+    }
+
+    public void StartManager()
+    {
+        counter = -1;
+        totalEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        EnemiesText();
     }
 
     private void OnEnable()

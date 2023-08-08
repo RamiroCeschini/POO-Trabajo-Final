@@ -34,7 +34,7 @@ public class PlayerLife : MonoBehaviour, IlifeSystem
             else if (value <= 0)
             {
                 currentLife = 0;
-                Debug.Log("derrota");
+                GameManager.Instance.LoadLevel(4);
             }
 
         }

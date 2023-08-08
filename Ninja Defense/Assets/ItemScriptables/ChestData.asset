@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79df925673a429c4a83df94c13c429ec, type: 3}
   m_Name: ChestData
   m_EditorClassIdentifier: 
-  bonusValue: 4
+  bonusValue: 2
   particlePrefab: {fileID: 6189212397407285384, guid: 3d76a2c0736670c4ba75265995efc9bc, type: 3}
