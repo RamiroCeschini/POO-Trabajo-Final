@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 857e0c4e91263624db188286a72c9c34, type: 3}
   m_Name: RedEnemyData
   m_EditorClassIdentifier: 
-  s_damage: 5
-  s_speed: 3.5
+  s_damage: 3
+  s_speed: 3
   s_attackDistance: 2
   s_attackCooldown: 1.5
+  s_maxLife: 20
