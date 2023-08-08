@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class Items : MonoBehaviour
 {
+    [SerializeField] protected ScriptableItem itemData;
     protected GameObject playerGameObject;
-    [SerializeField] protected int abstractBonus;
-    [SerializeField] protected GameObject itemParticle;
+    protected int abstractBonus;
+    protected GameObject itemParticle;
+    
+    protected void GeneralStart()
+    {
+        playerGameObject = GameObject.FindGameObjectWithTag("Player");
 
+        abstractBonus = itemData.S_bonus;
+        itemParticle = itemData.S_particle;
+    }
 }

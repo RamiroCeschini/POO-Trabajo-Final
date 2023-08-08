@@ -6,10 +6,20 @@ public class Potion : Items, Iinteractuable
 {
     private void Start()
     {
-        playerGameObject = GameObject.FindGameObjectWithTag("Player");
+        GeneralStart();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Accion();
+        }
     }
     public void Accion()
     {
-        playerGameObject.GetComponent<IlifeSystem>().TakeDamage(abstractBonus);   
+     //   playerGameObject.GetComponent<IlifeSystem>().TakeDamage(-abstractBonus);
+        Instantiate(itemParticle, gameObject.transform.position, gameObject.transform.rotation);
+        Destroy(this.gameObject);
     }
 }
