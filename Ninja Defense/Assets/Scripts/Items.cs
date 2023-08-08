@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Items : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected ScriptableItem itemData;
+    protected GameObject playerGameObject;
+    protected int abstractBonus;
+    protected GameObject itemParticle;
+    
+    protected void GeneralStart()
     {
-        
-    }
+        playerGameObject = GameObject.FindGameObjectWithTag("Player");
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        abstractBonus = itemData.S_bonus;
+        itemParticle = itemData.S_particle;
     }
 }
