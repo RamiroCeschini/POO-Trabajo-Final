@@ -9,11 +9,14 @@ public class ShurikenAttack : MonoBehaviour
     [SerializeField] private int startShurikens;
     [SerializeField] private int maxShurikens;
 
+    public delegate void ShurikenEvent();
+    public static ShurikenEvent shurikenEvent;
+
     private int currentShurikens;
-    private int CurrentShurikens
+    public int CurrentShurikens
     {
         get { return currentShurikens; }
-        set
+        private set
         {
             if (value > 0 && value < maxShurikens)
             {
@@ -33,6 +36,7 @@ public class ShurikenAttack : MonoBehaviour
     private void Start()
     {
         CurrentShurikens = startShurikens;
+        shurikenEvent?.Invoke();
     }
 
     private void Update()
@@ -46,6 +50,7 @@ public class ShurikenAttack : MonoBehaviour
     public void AddShuriken(int shurikenAmount)
     {
         CurrentShurikens += shurikenAmount;
+        shurikenEvent?.Invoke();
     }
 
     private void ShurikenSpawn()
@@ -54,6 +59,7 @@ public class ShurikenAttack : MonoBehaviour
         {
             Instantiate(shurikenPrefab, shurikenSpawnPoint.position, shurikenSpawnPoint.rotation);
             CurrentShurikens--;
+            shurikenEvent?.Invoke();
         }
     }
 
