@@ -9,7 +9,7 @@ public class GameManagement : MonoBehaviour
     public static GameManagement Instance { get; private set; }
 
     private int gameStage = 1;
-    public int GameStage { get { return gameStage; } }
+    public int GameStage { get { return gameStage; } set { gameStage = value; } }
 
     private void Awake()
     {

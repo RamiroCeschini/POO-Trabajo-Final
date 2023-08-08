@@ -8,6 +8,7 @@ public class MenuButtons : MonoBehaviour
     public void Play()
     {
         SceneManager.LoadScene("Nivel 1");
+        GameManagement.Instance.GameStage = 1;
     }
 
     public void MainMenu()
