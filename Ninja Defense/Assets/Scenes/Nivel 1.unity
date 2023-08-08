@@ -1236,6 +1236,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2676440396013846427, guid: 8072aa5d4b9d59543b3f68d1b5edb4d0, type: 3}
+      propertyPath: bloodParticle
+      value: 
+      objectReference: {fileID: 6189212397407285384, guid: 075894eac580ecd45b22a904ee97a771, type: 3}
     - target: {fileID: 2676440396013846429, guid: 8072aa5d4b9d59543b3f68d1b5edb4d0, type: 3}
       propertyPath: m_RootOrder
       value: 0

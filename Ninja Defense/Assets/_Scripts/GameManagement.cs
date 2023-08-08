@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManagement : MonoBehaviour
 {
 
-    public static GameManager Instance { get; private set; }
+    public static GameManagement Instance { get; private set; }
 
     private int gameStage = 1;
     public int GameStage { get { return gameStage; } }
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         else if (level == 2)
         {
             SceneManager.LoadScene("Victory");
+            gameStage = 1;
         }
         else if (level == 4)
         {

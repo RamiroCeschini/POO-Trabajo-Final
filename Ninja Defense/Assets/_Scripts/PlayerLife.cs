@@ -6,7 +6,9 @@ using UnityEngine;
 public class PlayerLife : MonoBehaviour, IlifeSystem
 {
     [SerializeField] private int maxLife;
+    [SerializeField] private GameObject bloodParticle;
     private int currentLife;
+
 
     public static event Action lifeEvent;
     private void Awake()
@@ -34,7 +36,7 @@ public class PlayerLife : MonoBehaviour, IlifeSystem
             else if (value <= 0)
             {
                 currentLife = 0;
-                GameManager.Instance.LoadLevel(4);
+                GameManagement.Instance.LoadLevel(4);
             }
 
         }
@@ -43,6 +45,7 @@ public class PlayerLife : MonoBehaviour, IlifeSystem
     public void TakeDamage(int damage)
     {
         CurrentLife -= damage;
+        Instantiate(bloodParticle, gameObject.transform.position, gameObject.transform.rotation);
         lifeEvent?.Invoke();
     }
 

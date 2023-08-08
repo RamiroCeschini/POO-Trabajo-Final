@@ -6,7 +6,7 @@ public class DoNotPass : MonoBehaviour, Iinteractuable
 {
     public void Accion()
     {
-        int stage = GameManager.Instance.GameStage;
-        GameManager.Instance.LoadLevel(stage);
+        int stage = GameManagement.Instance.GameStage;
+        GameManagement.Instance.LoadLevel(stage);
     }
 }

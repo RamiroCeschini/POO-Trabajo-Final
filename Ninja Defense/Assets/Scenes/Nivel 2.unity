@@ -25807,6 +25807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLife: 50
+  bloodParticle: {fileID: 6189212397407285384, guid: 075894eac580ecd45b22a904ee97a771, type: 3}
 --- !u!114 &5893383615548187012
 MonoBehaviour:
   m_ObjectHideFlags: 0

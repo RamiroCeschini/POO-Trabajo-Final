@@ -16,4 +16,4 @@ MonoBehaviour:
   s_speed: 4
   s_attackDistance: 8
   s_attackCooldown: 6
-  s_maxLife: 15
+  s_maxLife: 22

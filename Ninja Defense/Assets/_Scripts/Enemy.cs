@@ -8,6 +8,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour, IlifeSystem
 {
     [SerializeField] protected ScriptableEnemigo enemyData;
+    [SerializeField] protected GameObject bloodParticle;
     protected float attackDistance;
     protected float attackCoolDown;
     protected int damage;
@@ -82,6 +83,7 @@ public class Enemy : MonoBehaviour, IlifeSystem
     public void TakeDamage(int damage)
     {
         life = Mathf.Clamp(life - damage ,0, maxLife);
+        Instantiate(bloodParticle, gameObject.transform.position, gameObject.transform.rotation);
         if (life == 0)
         {
             enemyEvent?.Invoke();

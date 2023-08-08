@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: d5cec55ade083e646bb50d0ccbb37421, type: 2}
+  bloodParticle: {fileID: 6189212397407285384, guid: 075894eac580ecd45b22a904ee97a771, type: 3}
   life: 0
   maxLife: 0
   weaponAnimator: {fileID: 9116189168614773871}
