@@ -1,18 +1,50 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLife : MonoBehaviour
+public class PlayerLife : MonoBehaviour, IlifeSystem
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int maxLife;
+    private int currentLife;
+
+    public static event Action lifeEvent;
+    private void Awake()
     {
-        
+        currentLife = maxLife;
     }
 
-    // Update is called once per frame
-    void Update()
+    public int MaxLife
     {
-        
+        get { return maxLife; }
     }
+    public int CurrentLife
+    {
+        get { return currentLife; }
+        private set
+        {
+            if (value > 0 && value < maxLife)
+            {
+                currentLife = value;
+            }
+            else if (value >= maxLife)
+            {
+                currentLife = maxLife;
+            }
+            else if (value <= 0)
+            {
+                currentLife = 0;
+                Debug.Log("derrota");
+            }
+
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        CurrentLife -= damage;
+        lifeEvent?.Invoke();
+    }
+
+
 }
