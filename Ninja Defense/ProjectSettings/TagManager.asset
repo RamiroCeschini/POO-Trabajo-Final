@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - EnemyManager
+  - ShuriManager
   layers:
   - Default
   - TransparentFX

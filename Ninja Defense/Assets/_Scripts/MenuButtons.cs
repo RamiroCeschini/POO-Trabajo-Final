@@ -8,7 +8,12 @@ public class MenuButtons : MonoBehaviour
     public void Play()
     {
         SceneManager.LoadScene("Nivel 1");
-        GameManagement.Instance.GameStage = 1;
+        if (GameManagement.Instance != null)
+        {
+            GameManagement.Instance.GameStage = 1;
+            GameManagement.Instance.CurrentLifePlayer = 0;
+            GameManagement.Instance.CurrentShurikens = -1;
+        }
     }
 
     public void MainMenu()

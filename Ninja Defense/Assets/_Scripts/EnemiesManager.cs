@@ -10,6 +10,15 @@ public class EnemiesManager : MonoBehaviour
     private int counter;
     private int totalEnemies;
 
+    public int Counter
+    {
+        get { return counter; }
+    }
+
+    public int TotalEnemies
+    {
+        get { return totalEnemies; }
+    }
     private void Start()
     {
         StartManager();

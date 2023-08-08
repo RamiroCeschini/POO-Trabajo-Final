@@ -35,7 +35,14 @@ public class ShurikenAttack : MonoBehaviour
 
     private void Start()
     {
-        CurrentShurikens = startShurikens;
+        if (GameManagement.Instance.CurrentShurikens == -1)
+        {
+            currentShurikens = startShurikens;
+        }
+        else
+        {
+            currentShurikens = GameManagement.Instance.CurrentShurikens;
+        }
         shurikenEvent?.Invoke();
     }
 

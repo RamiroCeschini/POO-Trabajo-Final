@@ -11,9 +11,17 @@ public class PlayerLife : MonoBehaviour, IlifeSystem
 
 
     public static event Action lifeEvent;
-    private void Awake()
+    private void Start()
     {
-        currentLife = maxLife;
+        if (GameManagement.Instance.CurrentLifePlayer == 0)
+        {
+            currentLife = maxLife;
+        }
+        else
+        {
+            currentLife = GameManagement.Instance.CurrentLifePlayer;
+        }
+        lifeEvent?.Invoke();
     }
 
     public int MaxLife
